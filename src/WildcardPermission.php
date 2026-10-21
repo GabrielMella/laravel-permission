@@ -49,14 +49,6 @@ class WildcardPermission implements Wildcard
             throw WildcardPermissionNotProperlyFormatted::create($permission);
         }
 
-        if (! Str::contains($part, static::SUBPART_DELIMITER)) {
-            $index[$part] = $this->buildIndex(
-                $index[$part] ?? [],
-                $parts,
-                $permission,
-            );
-        }
-
         $subParts = explode(static::SUBPART_DELIMITER, $part);
 
         foreach ($subParts as $subPart) {
